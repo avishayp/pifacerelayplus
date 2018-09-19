@@ -6,6 +6,7 @@ import time
 # /dev/spidev<bus>.<chipselect>
 DEFAULT_SPI_BUS = 0
 DEFAULT_SPI_CHIP_SELECT = 0
+DEFAULT_SPI_SPEED_HZ = 10000
 
 # Datasheet says coast is 0, 0 and bake is 1, 1. I think it's wrong.
 # (pin_num1, pin_num2)
@@ -163,8 +164,9 @@ class PiFaceRelayPlus(pifacecommon.mcp23s17.MCP23S17,
                  hardware_addr=0,
                  bus=DEFAULT_SPI_BUS,
                  chip_select=DEFAULT_SPI_CHIP_SELECT,
+                 speed_hz=DEFAULT_SPI_SPEED_HZ,
                  init_board=True):
-        super(PiFaceRelayPlus, self).__init__(hardware_addr, bus, chip_select)
+        super(PiFaceRelayPlus, self).__init__(hardware_addr, bus, chip_select, speed_hz=speed_hz)
 
         pcmcp = pifacecommon.mcp23s17
 
